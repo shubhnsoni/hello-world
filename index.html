@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="hi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agent Portfolio</title>
+    <style>
+        body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; padding: 24px; color: #1f2937; background: #f8fafc; }
+        .container { max-width: 960px; margin: 0 auto; }
+        .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+        h1 { margin: 0 0 4px 0; font-size: 28px; }
+        .muted { color: #6b7280; margin: 0 0 16px 0; }
+        .stats { display: inline-block; background: #f1f5f9; color: #0f172a; padding: 6px 10px; border-radius: 999px; font-size: 14px; margin-bottom: 16px; }
+        .album { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+        .album img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; border: 1px solid #e5e7eb; background: #e5e7eb; }
+        .section-title { font-size: 18px; margin: 16px 0 10px; }
+    </style>
+    <!-- Simpler se simpler: single HTML file, no external CSS/JS needed -->
+    <!-- Niche images aap apne URLs se replace kar sakte hain -->
+    <!-- Placeholder album niche diya gaya hai -->
+    <script>
+        // Is object ko edit karke naam, address aur album badal sakte hain
+        const agentProfile = {
+            name: "Aarav Singh",
+            address: "12, Model Colony, Mumbai, Maharashtra",
+            albumImageUrls: [
+                "https://picsum.photos/id/1011/600/400",
+                "https://picsum.photos/id/1015/600/400",
+                "https://picsum.photos/id/1025/600/400",
+                "https://picsum.photos/id/1035/600/400",
+                "https://picsum.photos/id/1043/600/400",
+                "https://picsum.photos/id/1050/600/400",
+                "https://picsum.photos/id/1069/600/400",
+                "https://picsum.photos/id/1074/600/400"
+            ]
+        };
+
+        function renderPortfolio() {
+            const nameEl = document.getElementById('agent-name');
+            const addressEl = document.getElementById('agent-address');
+            const shootsCountEl = document.getElementById('shoots-count');
+            const albumEl = document.getElementById('album');
+
+            nameEl.textContent = agentProfile.name;
+            addressEl.textContent = agentProfile.address;
+
+            albumEl.innerHTML = '';
+            agentProfile.albumImageUrls.forEach(function(url, index) {
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = 'Shoot ' + (index + 1);
+                albumEl.appendChild(img);
+            });
+
+            shootsCountEl.textContent = agentProfile.albumImageUrls.length;
+        }
+
+        document.addEventListener('DOMContentLoaded', renderPortfolio);
+    </script>
+    </head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 id="agent-name">Agent Name</h1>
+            <p id="agent-address" class="muted">Address</p>
+            <div class="stats">Total Photoshoots: <span id="shoots-count">0</span></div>
+
+            <div class="section-title">Album</div>
+            <div id="album" class="album">
+                <!-- Images will render here from agentProfile.albumImageUrls -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
